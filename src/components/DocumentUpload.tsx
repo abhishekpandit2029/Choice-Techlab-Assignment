@@ -40,7 +40,6 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
     }
 
     const handleSubmit = (values: IKYCForm) => {
-        console.log("valuea", values, uploadedDocs)
         setFields({
             address_proof: uploadedDocs?.address_proof?.url,
             identity_proof: uploadedDocs?.identity_proof?.url,
