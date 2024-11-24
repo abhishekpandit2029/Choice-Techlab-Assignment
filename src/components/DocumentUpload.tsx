@@ -78,13 +78,13 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             className="w-full"
                             rules={[{ required: true, message: 'Please Enter Your Select Identity Proof!' }]}
                         >
-                            <SelectGovernmentID defaultValue={storeValues?.select_identity_proof || filteredIncomeProof} filteredVaue={addressProof} placeholderName="Select Identity Proof" onChange={(value) => setIncomeProof(value)} />
+                            <SelectGovernmentID defaultValue={storeValues?.select_identity_proof || filteredIncomeProof} filteredValue={addressProof} placeholderName="Select Identity Proof" onChange={(value) => setIncomeProof(value)} />
                         </Form.Item>
                         <Form.Item
                             label="Select Income Proof"
                             name="select_income_proof"
                             className="w-full"
-                            rules={[{ required: true, message: 'Please Enter Your Select Income Proof!' }]}
+                            rules={[{ required: false, message: 'Please Enter Your Select Income Proof!' }]}
                         >
                             <SelectIncomeProof />
                         </Form.Item>
@@ -102,9 +102,9 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             >
                                 <div className='flex flex-col place-content-start space-y-2'>
                                     <Button size='large' style={{ borderRadius: "8px" }} >Click to Upload Address Proof</Button>
-                                    {uploadedDocs.address_proof?.name && (
-                                        <Typography.Text className='ml-4'>
-                                            Uploaded: {uploadedDocs.address_proof?.name}
+                                    {(uploadedDocs.address_proof?.name || (storeValues?.address_proof && storeValues.address_proof.length > 0)) && (
+                                        <Typography.Text className="text-green-500">
+                                            Address Proof successfully Uploaded
                                         </Typography.Text>
                                     )}
                                 </div>
@@ -123,9 +123,9 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             >
                                 <div className='flex flex-col place-content-start space-y-2'>
                                     <Button size='large' style={{ borderRadius: "8px" }} className='w-full'>Click to Upload Identity Proof</Button>
-                                    {uploadedDocs.identity_proof?.name && (
-                                        <Typography.Text className='ml-4'>
-                                            Uploaded: {uploadedDocs.identity_proof?.name}
+                                    {(uploadedDocs.identity_proof?.name || (storeValues?.identity_proof && storeValues.identity_proof.length > 0)) && (
+                                        <Typography.Text className="text-green-500">
+                                            Identity Proof successfully Uploaded
                                         </Typography.Text>
                                     )}
                                 </div>
@@ -135,7 +135,7 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             label="Upload Income Proof"
                             name="income_proof"
                             className="w-full"
-                            rules={[{ required: true, message: "Please upload your Income Proof!" }]}
+                            rules={[{ required: false, message: "Please upload your Income Proof!" }]}
                         >
                             <Upload
                                 beforeUpload={(file) => handleUpload("income_proof", file)}
@@ -143,9 +143,9 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             >
                                 <div className='flex flex-col place-content-start space-y-2'>
                                     <Button size='large' className='w-full' style={{ borderRadius: "8px" }} >Click to Upload Income Proof</Button>
-                                    {uploadedDocs.income_proof?.name && (
-                                        <Typography.Text className='ml-4'>
-                                            Uploaded: {uploadedDocs.income_proof?.name}
+                                    {(uploadedDocs.income_proof?.name || (storeValues?.income_proof && storeValues.income_proof.length > 0)) && (
+                                        <Typography.Text className="text-green-500">
+                                            Income Proof successfully Uploaded
                                         </Typography.Text>
                                     )}
                                 </div>

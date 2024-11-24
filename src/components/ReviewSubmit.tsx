@@ -9,15 +9,13 @@ export default function ReviewSubmit({ prev }: IStepProps) {
     const { form: storeValues } = useKYCStore();
     return (
         <div className="flex flex-col space-y-6">
-
-
             <div className="flex flex-col space-y-6">
                 <p className="text-xl font-bold">Personal Details</p>
                 <div>
                     {storeValues?.users_selfie && <Image src={storeValues?.users_selfie} alt={"users_selfie"} className="rounded-lg" width={200} height={200} />}
                 </div>
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">First Name</p>
                             <p className="text-base">{storeValues?.first_name || "N/A"}</p>
@@ -27,7 +25,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             <p className="text-base">{storeValues?.gender || "N/A"}</p>
                         </div>
                     </div>
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Middle Name</p>
                             <p className="text-base">{storeValues?.middle_name || "N/A"}</p>
@@ -38,7 +36,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                         </div>
 
                     </div>
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Last Name</p>
                             <p className="text-base">{storeValues?.last_name || "N/A"}</p>
@@ -54,7 +52,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
             <div className="flex flex-col space-y-6">
                 <p className="text-xl font-bold">Contact Details</p>
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Primary Address</p>
                             <p className="text-base">{storeValues?.primary_address || "N/A"}</p>
@@ -68,8 +66,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             <p className="text-base">{storeValues?.alternate_address || "N/A"}</p>
                         </div>
                     </div>
-
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Primary Contact Number</p>
                             <p className="text-base">{storeValues?.primary_contact_number || "N/A"}</p>
@@ -83,7 +80,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             <p className="text-base">{storeValues?.communication_preference || "N/A"}</p>
                         </div>
                     </div>
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Alternate Email Address</p>
                             <p className="text-base">{storeValues?.alternate_email_address || "N/A"}</p>
@@ -103,7 +100,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
             <div className="flex flex-col space-y-6">
                 <p className="text-xl font-bold">Identity Details</p>
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Government ID</p>
                             <p className="text-base">{storeValues?.government_id || "N/A"}</p>
@@ -113,7 +110,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             <p className="text-base">{storeValues?.alternate_government_id || "N/A"}</p>
                         </div>
                     </div>
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Government ID Number</p>
                             <p className="text-base">{storeValues?.government_id_number || "N/A"}</p>
@@ -123,7 +120,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             <p className="text-base">{storeValues?.alternate_government_id_number || "N/A"}</p>
                         </div>
                     </div>
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Government ID Issue Date</p>
                             <p className="text-base">{storeValues?.government_id_issue_date || "N/A"}</p>
@@ -139,7 +136,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
             <div className="flex flex-col space-y-6">
                 <p className="text-xl font-bold">Bank Details</p>
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p className="text-sm">Account Holder Name</p>
                             <p className="text-base">{storeValues?.account_holder_name || "N/A"}</p>
@@ -149,7 +146,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             <p>{storeValues?.bank_address || "N/A"}</p>
                         </div>
                     </div>
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p>Bank Name</p>
                             <p>{storeValues?.bank_name || "N/A"}</p>
@@ -159,7 +156,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             <p>{storeValues?.account_nmber || "N/A"}</p>
                         </div>
                     </div>
-                    <div className="w-full flex flex-col md:gap-6">
+                    <div className="w-full flex flex-col md:gap-4">
                         <div>
                             <p>Branch Name</p>
                             <p>{storeValues?.branch_name || "N/A"}</p>

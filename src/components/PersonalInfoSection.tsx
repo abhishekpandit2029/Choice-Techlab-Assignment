@@ -18,12 +18,14 @@ export default function PersonalInfo({ next }: IStepProps) {
     }, [form, storeValues]);
 
     const handleSubmit = (values: IKYCForm) => {
+        console.log(values)
         setFields({
             ...values,
         });
         if (next) next();
     };
 
+    console.log("storeValues", storeValues)
     const filteredAlternateGovernmentID = governmentID === alternateGovernmentID ? null : alternateGovernmentID
 
     return (
@@ -51,6 +53,7 @@ export default function PersonalInfo({ next }: IStepProps) {
                             label="Middle Name"
                             name="middle_name"
                             className="w-full"
+                            rules={[{ required: true, message: 'Please Enter Your Middle Name!' }]}
                         >
                             <Input size="large" placeholder="Enter Your Middle Name" style={{ borderRadius: '8px' }} />
                         </Form.Item>
@@ -68,7 +71,7 @@ export default function PersonalInfo({ next }: IStepProps) {
                             label="Gender"
                             name="gender"
                             className="w-full"
-                            rules={[{ required: true, message: 'Please Select Your Gender!' }]}
+                            rules={[{ required: false, message: 'Please Select Your Gender!' }]}
                         >
                             <SelectGender />
                         </Form.Item>
@@ -176,7 +179,7 @@ export default function PersonalInfo({ next }: IStepProps) {
                 </div>
             </div>
 
-            <div className='flex flex-col space-y-6'>
+            <div className='flex flex-col space-y-6 w-full'>
                 <p className='text-xl font-bold'>Identity Details</p>
                 <div>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
@@ -205,22 +208,20 @@ export default function PersonalInfo({ next }: IStepProps) {
                             <Input size="large" placeholder="Enter Your Government ID Issue Date" style={{ borderRadius: '8px' }} />
                         </Form.Item>
                     </div>
-                </div>
-                <div>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
                         <Form.Item
                             label="Alternate Government ID"
                             name="alternate_government_id"
                             className='w-full'
-                            rules={[{ required: true, message: 'Please Enter Your Alternate Government ID!' }]}
+                            rules={[{ required: false, message: 'Please Enter Your Alternate Government ID!' }]}
                         >
-                            <SelectGovernmentID defaultValue={storeValues?.alternate_government_id || filteredAlternateGovernmentID} filteredVaue={governmentID} placeholderName="Select Alternate Government ID" onChange={(value) => setAlternateGovernmentID(value)} />
+                            <SelectGovernmentID defaultValue={storeValues?.alternate_government_id || filteredAlternateGovernmentID} filteredValue={governmentID} placeholderName="Select Alternate Government ID" onChange={(value) => setAlternateGovernmentID(value)} />
                         </Form.Item>
                         <Form.Item
                             label="Alternate Government ID Number"
                             name="alternate_government_id_number"
                             className='w-full'
-                            rules={[{ required: true, message: 'Please Enter Your Alternate Government ID Number!' }]}
+                            rules={[{ required: false, message: 'Please Enter Your Alternate Government ID Number!' }]}
                         >
                             <Input size='large' placeholder="Enter Your Alternate Government ID number" style={{ borderRadius: "8px" }} />
                         </Form.Item>
@@ -228,7 +229,7 @@ export default function PersonalInfo({ next }: IStepProps) {
                             label="Alternate Government ID Issue Date"
                             name="alternate_government_id_issue_date"
                             className='w-full'
-                            rules={[{ required: true, message: 'Please Enter Your Alternate Government ID Issue Date!' }]}
+                            rules={[{ required: false, message: 'Please Enter Your Alternate Government ID Issue Date!' }]}
                         >
                             <Input size="large" placeholder="Enter Your First Name" style={{ borderRadius: '8px' }} />
                         </Form.Item>

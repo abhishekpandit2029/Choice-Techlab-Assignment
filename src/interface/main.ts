@@ -3,7 +3,7 @@ export interface IKYCForm {
     first_name: string;
     middle_name?: string;
     last_name: string;
-    gender: string;
+    gender?: string;
     dob: string;
     birth_place: string;
     blood_group?: string;
@@ -69,4 +69,11 @@ export interface IUploadedDocsType {
 export interface IStepProps {
     next?: () => void
     prev?: () => void
+}
+
+export interface ISelectGovernmentIDProps {
+    placeholderName: string;
+    defaultValue?: string | null;
+    filteredValue?: string | null;
+    onChange?: (value: string) => void;
 }

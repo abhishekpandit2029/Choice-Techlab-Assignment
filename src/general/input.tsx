@@ -1,10 +1,10 @@
+import { ISelectGovernmentIDProps } from "@/interface/main";
 import { useKYCStore } from "@/zustand/store";
 import { Select, SelectProps } from "antd";
 
 export function SelectGender() {
-    const { form: storeValues } = useKYCStore();
     return (
-        <Select size="large" placeholder="Select Gender" value={storeValues?.gender} showSearch options={[
+        <Select size="large" placeholder="Select Gender" showSearch options={[
             { value: "Male", label: "Male" },
             { value: "Female", label: "Female" },
             { value: "Non-binary", label: "Non-binary" },
@@ -36,7 +36,7 @@ export function SelectPreferredContactTime() {
     );
 }
 
-export function SelectGovernmentID({ placeholderName, defaultValue, filteredVaue, onChange }: { placeholderName: string, defaultValue?: string | null | undefined, filteredVaue?: string | null | undefined, onChange?: (value: string) => void; }) {
+export function SelectGovernmentID({ placeholderName, defaultValue, filteredValue, onChange }: ISelectGovernmentIDProps) {
     return (
         <Select size='large' placeholder={placeholderName} value={defaultValue} options={[
             { label: "Passport", value: "Passport" },
@@ -46,14 +46,13 @@ export function SelectGovernmentID({ placeholderName, defaultValue, filteredVaue
             { label: "Ratio Card", value: "Ratio Card" },
             { label: "PAN Card", value: "PAN Card" },
             { label: "Voter Card", value: "Voter Card" },
-        ]?.filter((item) => item?.value !== filteredVaue)} onChange={onChange} />
+        ]?.filter((item) => item?.value !== filteredValue)} onChange={onChange} />
     );
 }
 
 export function SelectIncomeProof() {
-    const { form: storeValues } = useKYCStore();
     return (
-        <Select size='large' placeholder="Select Income Proof" value={storeValues?.select_income_proof} options={[
+        <Select size='large' placeholder="Select Income Proof" options={[
             { label: "Salary slip", value: "Salary slip" },
             { label: "Bank statement", value: "Bank statement" },
             { label: "Form 16 of ITR", value: "Form 16 of ITR" },

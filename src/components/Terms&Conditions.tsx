@@ -1,8 +1,12 @@
 import { useKYCStore } from "@/zustand/store";
-import { Button, Checkbox, CheckboxProps, Form } from "antd";
-import WebcamCapture from "./WebcamCapture";
+import { Button, Checkbox, CheckboxProps, Form, Skeleton } from "antd";
 import { IStepProps } from "@/interface/main";
 import { useState } from "react";
+import dynamic from "next/dynamic";
+
+const WebcamCapture = dynamic(() => import('./WebcamCapture'), {
+    loading: () => <Skeleton.Button />,
+})
 
 export default function TermsConditions({ next, prev }: IStepProps) {
     const { form: storeValues } = useKYCStore();
