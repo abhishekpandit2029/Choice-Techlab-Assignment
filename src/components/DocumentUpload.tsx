@@ -89,7 +89,7 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             <SelectIncomeProof />
                         </Form.Item>
                     </div>
-                    <div className="flex flex-col md:gap-6 md:flex-row w-full mb-12">
+                    <div className="flex flex-col md:gap-6 md:flex-row w-full mb-4">
                         <Form.Item
                             label="Upload Address Proof"
                             name="address_proof"

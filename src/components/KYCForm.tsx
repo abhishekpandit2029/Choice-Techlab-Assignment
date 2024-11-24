@@ -56,7 +56,10 @@ export default function KYCForm() {
         backgroundColor: token.colorFillAlter,
         borderRadius: token.borderRadiusLG,
         border: `1px dashed ${token.colorBorder}`,
-        padding: 24,
+        // padding: 24,
+        paddingTop: 24,
+        paddingRight: 24,
+        paddingLeft: 24,
         marginTop: 16,
     };
 

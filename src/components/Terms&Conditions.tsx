@@ -42,7 +42,7 @@ export default function TermsConditions({ next, prev }: IStepProps) {
             <div>
                 {acceptedtnc && <WebcamCapture />}
             </div>
-            <div className="flex place-content-center">
+            <div className="flex place-content-center pb-6">
                 {prev && (
                     <Button
                         type="default"

@@ -194,7 +194,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                 </div>
             </div>
 
-            <div className="flex place-content-center">
+            <div className="flex place-content-center pb-6">
                 {prev && (
                     <Button type="default" size="large" onClick={prev} className='mr-4' style={{ borderRadius: '8px' }}>
                         Previous

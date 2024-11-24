@@ -33,6 +33,7 @@ export default function PersonalInfo({ next }: IStepProps) {
             layout="vertical"
             onFinish={handleSubmit}
             requiredMark={false}
+            className='p-10'
             initialValues={storeValues}
         >
             <div className="flex flex-col space-y-6 w-full">
@@ -254,7 +255,7 @@ export default function PersonalInfo({ next }: IStepProps) {
                 </div>
             </div>
 
-            <div className='flex flex-col space-y-6 w-full mb-12'>
+            <div className='flex flex-col space-y-6 w-full mb-6'>
                 <p className='text-xl font-bold'>Bank Details</p>
                 <div className='space-y-2'>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
