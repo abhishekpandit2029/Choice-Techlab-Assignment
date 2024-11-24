@@ -1,14 +1,22 @@
 "use client"
 
+import { IStepProps } from "@/interface/main";
 import { useKYCStore } from "@/zustand/store";
+import { Button } from "antd";
 import Image from "next/image";
 
-export default function ReviewSubmit() {
+export default function ReviewSubmit({ prev }: IStepProps) {
     const { form: storeValues } = useKYCStore();
+    console.log("storeValues", storeValues)
     return (
         <div className="flex flex-col space-y-6">
+
+
             <div className="flex flex-col space-y-6">
                 <p className="text-xl font-bold">Personal Details</p>
+                <div>
+                    {storeValues?.users_selfie && <Image src={storeValues?.users_selfie} alt={"users_selfie"} className="rounded-lg" width={200} height={200} />}
+                </div>
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
@@ -153,23 +161,33 @@ export default function ReviewSubmit() {
                 <p className="text-xl font-bold">Bank Details</p>
                 <div className="flex flex-col space-y-4">
                     <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
-                        <div className="w-full">
-                            <p>Address Proof</p>
-                            <p>{storeValues?.select_address_proof || "N/A"}</p>
+                        <div className="w-full flex flex-col space-y-3">
+                            <p>Address Proof : {storeValues?.select_address_proof || "N/A"}</p>
                             {storeValues?.address_proof && <Image src={storeValues?.address_proof} alt={"address_proof"} width={200} height={200} />}
                         </div>
-                        <div className="w-full">
-                            <p>Identity Proof</p>
-                            <p>{storeValues?.select_identity_proof || "N/A"}</p>
+                        <div className="w-full flex flex-col space-y-3">
+                            <p>Identity Proof : {storeValues?.select_identity_proof || "N/A"}</p>
                             {storeValues?.identity_proof && <Image src={storeValues?.identity_proof} alt={"identity_proof"} width={200} height={200} />}
                         </div>
-                        <div className="w-full">
+                        <div className="w-full flex flex-col space-y-3">
                             <p>Bank Proff</p>
                             {storeValues?.income_proof ? <Image src={storeValues?.income_proof} alt={"income_proof"} width={200} height={200} /> : "N/A"}
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div className="flex place-content-center">
+                {prev && (
+                    <Button type="default" size="large" onClick={prev} className='mr-4' style={{ borderRadius: '8px' }}>
+                        Previous
+                    </Button>
+                )}
+                <Button type="primary" size="large" htmlType="submit" style={{ borderRadius: '8px' }}>
+                    Submit
+                </Button>
+            </div>
+
         </div>
     )
 }

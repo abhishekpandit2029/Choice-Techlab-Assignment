@@ -25,9 +25,9 @@ export const useKYCStore = create<KYCStore>((set) => ({
         alternate_email_address: "",
         primary_contact_number: "",
         alternate_contact_number: "",
-        communication_preference: "",
-        preferred_contact_time: "",
-        government_id: "",
+        communication_preference: "Phone",
+        preferred_contact_time: "Morning",
+        government_id: "Aadhar Card",
         government_id_number: "",
         account_holder_name: "",
         bank_name: "",
@@ -38,9 +38,14 @@ export const useKYCStore = create<KYCStore>((set) => ({
         address_proof: "",
         identity_proof: "",
         income_proof: "",
-        select_address_proof: "",
-        select_identity_proof: "",
-        select_income_proof: ""
+        address_proof_file_name: "",
+        identity_proof_file_name: "",
+        income_proof_file_name: "",
+        select_address_proof: "Aadhar Card",
+        select_identity_proof: "Aadhar Card",
+        select_income_proof: "Salary slip",
+        accepted_terms_and_conditions: false,
+        users_selfie: ""
     },
     setFields: (fields) =>
         set((state) => ({

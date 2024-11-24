@@ -41,6 +41,14 @@ export interface IKYCForm {
     select_address_proof: string
     select_identity_proof: string
     select_income_proof: string
+    address_proof_file_name: string
+    identity_proof_file_name: string
+    income_proof_file_name: string
+
+
+    //Accepted terms and conditions
+    accepted_terms_and_conditions: boolean
+    users_selfie: string | null
 }
 
 
@@ -53,4 +61,9 @@ export interface IUploadedDocsType {
     address_proof: UploadedDoc | null;
     identity_proof: UploadedDoc | null;
     income_proof: UploadedDoc | null;
+}
+
+export interface IStepProps {
+    next?: () => void
+    prev?: () => void
 }

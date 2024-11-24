@@ -2,30 +2,33 @@
 
 import React, { useEffect } from 'react';
 import { Button } from 'antd';
-import { Form, Input, Select } from 'antd';
-import { IKYCForm } from '@/interface/main';
+import { Form, Input } from 'antd';
 import { useKYCStore } from '@/zustand/store';
-import dayjs from 'dayjs';
 import { SelectCommunicationPreference, SelectGender, SelectGovernmentID, SelectPreferredContactTime } from '@/general/input';
+import { IKYCForm, IStepProps } from '@/interface/main';
 
-export default function PersonalInfo() {
+export default function PersonalInfo({ next }: IStepProps) {
     const [form] = Form.useForm();
     const { form: storeValues, setFields } = useKYCStore();
+    console.log("storeValues", storeValues)
 
     useEffect(() => {
         form.setFieldsValue(storeValues);
     }, [form, storeValues]);
+
+    const handleSubmit = (values: IKYCForm) => {
+        setFields({
+            ...values,
+        });
+        if (next) next();
+    };
 
     return (
         <Form
             form={form}
             name="financial_kyc_form"
             layout="vertical"
-            onFinish={(values: IKYCForm) =>
-                setFields({
-                    ...values,
-                })
-            }
+            onFinish={handleSubmit}
             requiredMark={false}
             initialValues={storeValues}
         >
@@ -180,7 +183,7 @@ export default function PersonalInfo() {
                             className='w-full'
                             rules={[{ required: true, message: 'Please Enter Your Government ID!' }]}
                         >
-                            <SelectGovernmentID />
+                            <SelectGovernmentID defaultValue={storeValues?.government_id} placeholderName="Select Government ID" />
                         </Form.Item>
                         <Form.Item
                             label="Government ID Number"
@@ -260,9 +263,9 @@ export default function PersonalInfo() {
                 </div>
             </div>
 
-            <Form.Item className="flex justify-end">
+            <Form.Item className="flex place-content-center">
                 <Button type="primary" size="large" htmlType="submit" style={{ borderRadius: '8px' }}>
-                    Save
+                    Save & Next
                 </Button>
             </Form.Item>
         </Form >

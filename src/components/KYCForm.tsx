@@ -5,21 +5,28 @@ import { Button, message, Steps, theme } from 'antd';
 import PersonalInfoSection from './PersonalInfoSection';
 import DocumentUpload from './DocumentUpload';
 import ReviewSubmit from './ReviewSubmit';
+import TermsConditions from './Terms&Conditions';
+import { IStepProps } from '@/interface/main';
 
 const steps = [
     {
         title: 'Personal Information',
-        content: <PersonalInfoSection />,
+        content: ({ next }: IStepProps) => <PersonalInfoSection next={next} />,
     },
     {
         title: 'Document Upload',
-        content: <DocumentUpload />,
+        content: ({ next, prev }: IStepProps) => <DocumentUpload next={next} prev={prev} />,
+    },
+    {
+        title: 'Terms and Conditions',
+        content: ({ next, prev }: IStepProps) => <TermsConditions next={next} prev={prev} />,
     },
     {
         title: 'Review and Submit',
-        content: <ReviewSubmit />,
+        content: ({ prev }: IStepProps) => <ReviewSubmit prev={prev} />,
     },
 ];
+
 
 export default function KYCForm() {
     const { token } = theme.useToken();
@@ -50,26 +57,13 @@ export default function KYCForm() {
         <div className='flex flex-col space-y-8'>
             <p className='font-bold text-3xl'>Complete Choice Techlab KYC Process</p>
             <div className='flex flex-col space-y-6'>
-                <Steps current={current} items={items} className='mb-4' />
-                <div style={contentStyle}>{steps[current].content}</div>
-                <div className='flex place-content-center'>
-                    {current > 0 && (
-                        <Button size='large' style={{ borderRadius: '8px' }} className='mr-4' onClick={() => prev()}>
-                            Previous
-                        </Button>
-                    )}
-                    {current < steps.length - 1 && (
-                        <Button size='large' style={{ borderRadius: '8px' }} className='mr-4' type="primary" onClick={() => next()}>
-                            Save & Next
-                        </Button>
-                    )}
-                    {current === steps.length - 1 && (
-                        <Button size='large' style={{ borderRadius: '8px' }} type="primary" onClick={() => message.success('Processing complete!')}>
-                            Done
-                        </Button>
-                    )}
+                <Steps current={current} items={items} />
+                <div style={contentStyle}>
+                    {typeof steps[current].content === 'function'
+                        ? steps[current].content({ next, prev })
+                        : steps[current].content}
                 </div>
             </div>
         </div>
     );
-};
+}
