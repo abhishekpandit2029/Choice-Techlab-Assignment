@@ -43,7 +43,7 @@ export default function WebcamCapture() {
 
     return (
         <>
-            <Button size="large" style={{ borderRadius: '8px' }} onClick={() => setIsModalOpen(true)}>
+            <Button size="large" className="min-w-100" style={{ borderRadius: '8px' }} onClick={() => setIsModalOpen(true)}>
                 <p className="flex items-center gap-x-2">  <TbLivePhotoFilled className={clsx("text-lg", storeValues?.users_selfie ? "text-green-500" : "text-red-500")} /> Capture Live Selfie</p>
             </Button>
             <Modal title="Take Selfie & Upload" open={isModalOpen} onCancel={handleCancel} footer={<div className="flex space-x-4 justify-end items-center mt-6">

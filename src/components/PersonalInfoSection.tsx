@@ -37,7 +37,7 @@ export default function PersonalInfo({ next }: IStepProps) {
         >
             <div className="flex flex-col space-y-6 w-full">
                 <p className="text-xl font-bold">Personal Details</p>
-                <div>
+                <div className='space-y-2'>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
                         <Form.Item
                             label="First Name"
@@ -77,7 +77,13 @@ export default function PersonalInfo({ next }: IStepProps) {
                             label="Date of Birth"
                             name="dob"
                             className="w-full"
-                            rules={[{ required: true, message: 'Please Select Your Date of Birth!' }]}
+                            rules={[
+                                { required: true, message: 'Please Select Your Date of Birth!' },
+                                {
+                                    pattern: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
+                                    message: 'Please enter a valid date in the format YYYY-MM-DD!',
+                                },
+                            ]}
                         >
                             <Input size="large" placeholder="Enter Your Date of Birth" style={{ borderRadius: '8px' }} />
                         </Form.Item>
@@ -93,9 +99,9 @@ export default function PersonalInfo({ next }: IStepProps) {
                 </div>
             </div>
 
-            <div className='flex flex-col space-y-6'>
+            <div className='flex flex-col space-y-6 w-full'>
                 <p className='text-xl font-bold'>Contact Details</p>
-                <div>
+                <div className='space-y-2'>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
                         <Form.Item
                             label="Primary Address"
@@ -179,7 +185,7 @@ export default function PersonalInfo({ next }: IStepProps) {
 
             <div className='flex flex-col space-y-6 w-full'>
                 <p className='text-xl font-bold'>Identity Details</p>
-                <div>
+                <div className='space-y-2'>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
                         <Form.Item
                             label="Government ID"
@@ -201,10 +207,17 @@ export default function PersonalInfo({ next }: IStepProps) {
                             label="Government ID Issue Date"
                             name="government_id_issue_date"
                             className='w-full'
-                            rules={[{ required: true, message: 'Please Enter Your Government ID Issue Date!' }]}
+                            rules={[
+                                { required: true, message: 'Please Enter Your Government ID Issue Date!' },
+                                {
+                                    pattern: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
+                                    message: 'Please enter a valid date in the format YYYY-MM-DD!',
+                                },
+                            ]}
                         >
                             <Input size="large" placeholder="Enter Your Government ID Issue Date" style={{ borderRadius: '8px' }} />
                         </Form.Item>
+
                     </div>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
                         <Form.Item
@@ -227,17 +240,23 @@ export default function PersonalInfo({ next }: IStepProps) {
                             label="Alternate Government ID Issue Date"
                             name="alternate_government_id_issue_date"
                             className='w-full'
-                            rules={[{ required: false, message: 'Please Enter Your Alternate Government ID Issue Date!' }]}
+                            rules={[
+                                { required: true, message: 'Please Enter Your Alternate Government ID Issue Date!' },
+                                {
+                                    pattern: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
+                                    message: 'Please enter a valid date in the format YYYY-MM-DD!',
+                                },
+                            ]}
                         >
-                            <Input size="large" placeholder="Enter Your First Name" style={{ borderRadius: '8px' }} />
+                            <Input size="large" placeholder="Enter Your Alternate Government ID Issue Date" style={{ borderRadius: '8px' }} />
                         </Form.Item>
                     </div>
                 </div>
             </div>
 
-            <div className='flex flex-col space-y-6 mb-4'>
+            <div className='flex flex-col space-y-6 w-full mb-12'>
                 <p className='text-xl font-bold'>Bank Details</p>
-                <div>
+                <div className='space-y-2'>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
                         <Form.Item
                             label="Account Holder Name"

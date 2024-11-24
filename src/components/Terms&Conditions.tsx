@@ -1,5 +1,5 @@
 import { useKYCStore } from "@/zustand/store";
-import { Button, Checkbox, CheckboxProps, Form, Skeleton } from "antd";
+import { Button, Checkbox, CheckboxProps, Skeleton } from "antd";
 import { IStepProps } from "@/interface/main";
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -17,9 +17,8 @@ export default function TermsConditions({ next, prev }: IStepProps) {
     };
 
     return (
-        <Form
+        <div
             className="flex flex-col space-y-6"
-            layout="vertical"
         >
             <p className="text-xl font-bold text-black">Terms and Conditions</p>
             <p className="flex flex-col space-y-4">
@@ -34,27 +33,16 @@ export default function TermsConditions({ next, prev }: IStepProps) {
                 <span>9. Completing the KYC process does not guarantee access to services and remains subject to platform approval.</span>
                 <span>10. By agreeing, the user acknowledges they have read, understood, and accepted these terms.</span>
             </p>
-            <Form.Item
-                valuePropName="checked"
-                rules={[
-                    { required: true, message: "You must accept the terms and conditions to proceed." },
-                ]}
+            <Checkbox
+                checked={acceptedtnc}
+                onChange={onChange}
             >
-                <Checkbox
-                    checked={acceptedtnc}
-                    onChange={onChange}
-                >
-                    I have read and accepted the terms and conditions
-                </Checkbox>
-            </Form.Item>
-            <Form.Item
-                name="selfie"
-                rules={[
-                    { required: Boolean(storeValues?.users_selfie) && false, message: "Take Selfie and then submit" },
-                ]}>
+                I have read and accepted the terms and conditions
+            </Checkbox>
+            <div>
                 {acceptedtnc && <WebcamCapture />}
-            </Form.Item>
-            <Form.Item className="flex place-content-center">
+            </div>
+            <div className="flex place-content-center">
                 {prev && (
                     <Button
                         type="default"
@@ -76,8 +64,8 @@ export default function TermsConditions({ next, prev }: IStepProps) {
                 >
                     Save & Next
                 </Button>
-            </Form.Item>
-        </Form >
+            </div>
+        </div >
 
     )
 }

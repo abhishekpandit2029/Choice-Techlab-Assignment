@@ -1,5 +1,4 @@
 import { IKYCForm } from '@/interface/main';
-import { Dayjs } from 'dayjs';
 import { create } from 'zustand';
 
 interface KYCStore {

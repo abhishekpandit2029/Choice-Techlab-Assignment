@@ -89,7 +89,7 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             <SelectIncomeProof />
                         </Form.Item>
                     </div>
-                    <div className="flex flex-col md:gap-6 md:flex-row w-full">
+                    <div className="flex flex-col md:gap-6 md:flex-row w-full mb-12">
                         <Form.Item
                             label="Upload Address Proof"
                             name="address_proof"
@@ -165,7 +165,6 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                     Save & Next
                 </Button>
             </Form.Item>
-
         </Form>
     );
 };

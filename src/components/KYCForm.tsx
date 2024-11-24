@@ -53,7 +53,6 @@ export default function KYCForm() {
     const contentStyle: React.CSSProperties = {
         lineHeight: '1.5',
         textAlign: 'left',
-        // color: token.colorTextTertiary,
         backgroundColor: token.colorFillAlter,
         borderRadius: token.borderRadiusLG,
         border: `1px dashed ${token.colorBorder}`,

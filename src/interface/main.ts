@@ -48,12 +48,10 @@ export interface IKYCForm {
     identity_proof_file_name: string
     income_proof_file_name: string
 
-
     //Accepted terms and conditions
     accepted_terms_and_conditions: boolean
     users_selfie: string | null
 }
-
 
 export interface UploadedDoc {
     name: string;
