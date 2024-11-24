@@ -56,7 +56,6 @@ export default function KYCForm() {
         backgroundColor: token.colorFillAlter,
         borderRadius: token.borderRadiusLG,
         border: `1px dashed ${token.colorBorder}`,
-        // padding: 24,
         paddingTop: 24,
         paddingRight: 24,
         paddingLeft: 24,
@@ -66,7 +65,7 @@ export default function KYCForm() {
     return (
         <div className='flex flex-col space-y-8'>
             <p className='font-bold text-3xl'>Complete Choice Techlab KYC Process</p>
-            <div className='flex flex-col space-y-6'>
+            <div className='flex flex-col gap-y-3'>
                 <Steps current={current} items={steps.map((item) => ({ key: item.title, title: item.title }))} />
                 <div style={contentStyle}>
                     {typeof steps[current].content === 'function'
