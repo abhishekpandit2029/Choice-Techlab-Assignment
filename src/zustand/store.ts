@@ -12,7 +12,7 @@ export const useKYCStore = create<KYCStore>((set) => ({
         first_name: "",
         middle_name: "",
         last_name: "",
-        gender: "",
+        gender: "Male",
         dob: "",
         birth_place: "",
         blood_group: "",
@@ -47,7 +47,7 @@ export const useKYCStore = create<KYCStore>((set) => ({
         income_proof_file_name: "",
         select_address_proof: "",
         select_identity_proof: "",
-        select_income_proof: "",
+        select_income_proof: "Salary slip",
         accepted_terms_and_conditions: false,
         users_selfie: ""
 

@@ -2,9 +2,9 @@ import { ISelectGovernmentIDProps } from "@/interface/main";
 import { useKYCStore } from "@/zustand/store";
 import { Select, SelectProps } from "antd";
 
-export function SelectGender() {
+export function SelectGender({ ...props }: SelectProps) {
     return (
-        <Select size="large" placeholder="Select Gender" showSearch options={[
+        <Select {...props} size="large" placeholder="Select Gender" showSearch options={[
             { value: "Male", label: "Male" },
             { value: "Female", label: "Female" },
             { value: "Non-binary", label: "Non-binary" },
@@ -50,9 +50,9 @@ export function SelectGovernmentID({ placeholderName, defaultValue, filteredValu
     );
 }
 
-export function SelectIncomeProof() {
+export function SelectIncomeProof({ ...props }: SelectProps) {
     return (
-        <Select size='large' placeholder="Select Income Proof" options={[
+        <Select {...props} size='large' placeholder="Select Income Proof" options={[
             { label: "Salary slip", value: "Salary slip" },
             { label: "Bank statement", value: "Bank statement" },
             { label: "Form 16 of ITR", value: "Form 16 of ITR" },

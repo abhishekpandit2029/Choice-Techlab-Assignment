@@ -18,14 +18,12 @@ export default function PersonalInfo({ next }: IStepProps) {
     }, [form, storeValues]);
 
     const handleSubmit = (values: IKYCForm) => {
-        console.log(values)
         setFields({
             ...values,
         });
         if (next) next();
     };
 
-    console.log("storeValues", storeValues)
     const filteredAlternateGovernmentID = governmentID === alternateGovernmentID ? null : alternateGovernmentID
 
     return (

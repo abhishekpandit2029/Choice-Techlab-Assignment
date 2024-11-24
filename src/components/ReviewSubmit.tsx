@@ -2,11 +2,16 @@
 
 import { IStepProps } from "@/interface/main";
 import { useKYCStore } from "@/zustand/store";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import Image from "next/image";
 
 export default function ReviewSubmit({ prev }: IStepProps) {
     const { form: storeValues } = useKYCStore();
+    const onSubmit = () => {
+        message.success("KYC Completed!")
+        window.location.reload();
+    }
+
     return (
         <div className="flex flex-col space-y-6">
             <div className="flex flex-col space-y-6">
@@ -182,7 +187,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                             {storeValues?.identity_proof && <Image src={storeValues?.identity_proof} alt={"identity_proof"} width={200} height={200} />}
                         </div>
                         <div className="w-full flex flex-col space-y-3">
-                            <p>Bank Proff</p>
+                            <p>Bank Proff : {storeValues?.select_income_proof || "N/A"}</p>
                             {storeValues?.income_proof ? <Image src={storeValues?.income_proof} alt={"income_proof"} width={200} height={200} /> : "N/A"}
                         </div>
                     </div>
@@ -195,7 +200,7 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                         Previous
                     </Button>
                 )}
-                <Button type="primary" size="large" htmlType="submit" style={{ borderRadius: '8px' }}>
+                <Button type="primary" size="large" htmlType="submit" style={{ borderRadius: '8px' }} onClick={onSubmit}>
                     Submit
                 </Button>
             </div>
