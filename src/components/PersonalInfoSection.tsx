@@ -112,7 +112,7 @@ export default function PersonalInfo({ next }: IStepProps) {
                         >
                             <Input size='large' placeholder="Enter Your Primary Address" style={{ borderRadius: "8px" }} />
                         </Form.Item>
-                        <Form.Item
+                        {/* <Form.Item
                             label="Primary Email Address"
                             name="primary_email_address"
                             className='w-full'
@@ -127,6 +127,46 @@ export default function PersonalInfo({ next }: IStepProps) {
                             rules={[{ required: false, message: 'Please Enter Your Alternate Email Address!' }]}
                         >
                             <Input size='large' placeholder="Enter Your Alternate Email Address" style={{ borderRadius: "8px" }} />
+                        </Form.Item> */}
+
+                        <Form.Item
+                            label="Primary Email Address"
+                            name="primary_email_address"
+                            className="w-full"
+                            rules={[
+                                { required: true, message: 'Please Enter Your Primary Email Address!' },
+                                {
+                                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                    message: 'Please enter a valid email address!',
+                                },
+                            ]}
+                        >
+                            <Input
+                                size="large"
+                                placeholder="Enter Your Primary Email Address"
+                                style={{ borderRadius: "8px" }}
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Alternate Email Address"
+                            name="alternate_email_address"
+                            className="w-full"
+                            rules={[
+                                {
+                                    required: false,
+                                },
+                                {
+                                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                    message: 'Please enter a valid email address!',
+                                },
+                            ]}
+                        >
+                            <Input
+                                size="large"
+                                placeholder="Enter Your Alternate Email Address"
+                                style={{ borderRadius: "8px" }}
+                            />
                         </Form.Item>
                     </div>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
@@ -142,17 +182,37 @@ export default function PersonalInfo({ next }: IStepProps) {
                             label="Primary Contact Number"
                             name="primary_contact_number"
                             className='w-full'
-                            rules={[{ required: true, message: 'Please Enter Your Primary Contact Number!' }]}
+                            rules={[
+                                { required: true, message: 'Please Enter Your Primary Contact Number!' },
+                                {
+                                    pattern: /^\d{10}$/,
+                                    message: 'Please enter a valid 10-digit contact number!',
+                                },
+                            ]}
                         >
-                            <Input size='large' placeholder="Enter Your Primary Contact Number" style={{ borderRadius: "8px" }} />
+                            <Input
+                                size="large"
+                                placeholder="Enter Your Primary Contact Number"
+                                style={{ borderRadius: "8px" }}
+                            />
                         </Form.Item>
                         <Form.Item
                             label="Alternate Contact Number"
                             name="alternate_contact_number"
                             className='w-full'
-                            rules={[{ required: false, message: 'Please Enter Your Alternate Contact Number!' }]}
+                            rules={[
+                                { required: true, message: 'Please Enter Your Alternate Contact Number!' },
+                                {
+                                    pattern: /^\d{10}$/,
+                                    message: 'Please enter a valid 10-digit contact number!',
+                                },
+                            ]}
                         >
-                            <Input size='large' placeholder="Enter Your Alternate Contact Number" style={{ borderRadius: "8px" }} />
+                            <Input
+                                size="large"
+                                placeholder="Enter Your Alternate Contact Number"
+                                style={{ borderRadius: "8px" }}
+                            />
                         </Form.Item>
                     </div>
                     <div className="flex flex-col md:gap-6 md:flex-row w-full">
@@ -242,7 +302,7 @@ export default function PersonalInfo({ next }: IStepProps) {
                             name="alternate_government_id_issue_date"
                             className='w-full'
                             rules={[
-                                { required: true, message: 'Please Enter Your Alternate Government ID Issue Date!' },
+                                { required: false, message: 'Please Enter Your Alternate Government ID Issue Date!' },
                                 {
                                     pattern: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
                                     message: 'Please enter a valid date in the format YYYY-MM-DD!',
