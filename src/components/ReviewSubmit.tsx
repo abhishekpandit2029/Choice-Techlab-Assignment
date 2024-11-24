@@ -7,7 +7,6 @@ import Image from "next/image";
 
 export default function ReviewSubmit({ prev }: IStepProps) {
     const { form: storeValues } = useKYCStore();
-    console.log("storeValues", storeValues)
     return (
         <div className="flex flex-col space-y-6">
 
@@ -20,33 +19,33 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
-                            <p>First Name</p>
-                            <p>{storeValues?.first_name || "N/A"}</p>
+                            <p className="text-sm">First Name</p>
+                            <p className="text-base">{storeValues?.first_name || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Gender</p>
-                            <p>{storeValues?.gender || "N/A"}</p>
+                            <p className="text-sm">Gender</p>
+                            <p className="text-base">{storeValues?.gender || "N/A"}</p>
                         </div>
                     </div>
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
-                            <p>Middle Name</p>
-                            <p>{storeValues?.middle_name || "N/A"}</p>
+                            <p className="text-sm">Middle Name</p>
+                            <p className="text-base">{storeValues?.middle_name || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Date of Birth</p>
-                            <p>{storeValues?.dob || "N/A"}</p>
+                            <p className="text-sm">Date of Birth</p>
+                            <p className="text-base">{storeValues?.dob || "N/A"}</p>
                         </div>
 
                     </div>
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
-                            <p>Last Name</p>
-                            <p>{storeValues?.last_name || "N/A"}</p>
+                            <p className="text-sm">Last Name</p>
+                            <p className="text-base">{storeValues?.last_name || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Place of Birth</p>
-                            <p>{storeValues?.birth_place || "N/A"}</p>
+                            <p className="text-sm">Place of Birth</p>
+                            <p className="text-base">{storeValues?.birth_place || "N/A"}</p>
                         </div>
                     </div>
                 </div>
@@ -57,45 +56,45 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
-                            <p>Primary Address</p>
-                            <p>{storeValues?.primary_address || "N/A"}</p>
+                            <p className="text-sm">Primary Address</p>
+                            <p className="text-base">{storeValues?.primary_address || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Secondary Address</p>
-                            <p>{storeValues?.secondary_address || "N/A"}</p>
+                            <p className="text-sm">Secondary Address</p>
+                            <p className="text-base">{storeValues?.secondary_address || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Alternate Address</p>
-                            <p>{storeValues?.alternate_address || "N/A"}</p>
+                            <p className="text-sm">Alternate Address</p>
+                            <p className="text-base">{storeValues?.alternate_address || "N/A"}</p>
                         </div>
                     </div>
 
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
-                            <p>Primary Contact Number</p>
-                            <p>{storeValues?.primary_contact_number || "N/A"}</p>
+                            <p className="text-sm">Primary Contact Number</p>
+                            <p className="text-base">{storeValues?.primary_contact_number || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Primary Email Address</p>
-                            <p>{storeValues?.primary_email_address || "N/A"}</p>
+                            <p className="text-sm">Primary Email Address</p>
+                            <p className="text-base">{storeValues?.primary_email_address || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Communication Preference</p>
-                            <p>{storeValues?.communication_preference || "N/A"}</p>
+                            <p className="text-sm">Communication Preference</p>
+                            <p className="text-base">{storeValues?.communication_preference || "N/A"}</p>
                         </div>
                     </div>
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
-                            <p>Alternate Email Address</p>
-                            <p>{storeValues?.alternate_email_address || "N/A"}</p>
+                            <p className="text-sm">Alternate Email Address</p>
+                            <p className="text-base">{storeValues?.alternate_email_address || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Alternate Contact Number</p>
-                            <p>{storeValues?.alternate_contact_number || "N/A"}</p>
+                            <p className="text-sm">Alternate Contact Number</p>
+                            <p className="text-base">{storeValues?.alternate_contact_number || "N/A"}</p>
                         </div>
                         <div>
-                            <p>Preferred Contact Time</p>
-                            <p>{storeValues?.preferred_contact_time || "N/A"}</p>
+                            <p className="text-sm">Preferred Contact Time</p>
+                            <p className="text-base">{storeValues?.preferred_contact_time || "N/A"}</p>
                         </div>
                     </div>
                 </div>
@@ -103,19 +102,35 @@ export default function ReviewSubmit({ prev }: IStepProps) {
 
             <div className="flex flex-col space-y-6">
                 <p className="text-xl font-bold">Identity Details</p>
-                <div className="flex flex-col space-y-4">
-                    <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
-                        <div className="w-full">
-                            <p>Government ID</p>
-                            <p>{storeValues?.government_id || "N/A"}</p>
+                <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
+                    <div className="w-full flex flex-col md:gap-6">
+                        <div>
+                            <p className="text-sm">Government ID</p>
+                            <p className="text-base">{storeValues?.government_id || "N/A"}</p>
                         </div>
-                        <div className="w-full">
-                            <p>Government ID Number</p>
-                            <p>{storeValues?.government_id_number || "N/A"}</p>
+                        <div>
+                            <p className="text-sm">Alternate Government ID</p>
+                            <p className="text-base">{storeValues?.alternate_government_id || "N/A"}</p>
                         </div>
-                        <div className="w-full">
-                            <p>Government ID Issue Date</p>
-                            <p>{storeValues?.government_id_issue_date || "N/A"}</p>
+                    </div>
+                    <div className="w-full flex flex-col md:gap-6">
+                        <div>
+                            <p className="text-sm">Government ID Number</p>
+                            <p className="text-base">{storeValues?.government_id_number || "N/A"}</p>
+                        </div>
+                        <div>
+                            <p className="text-sm">Alternate Government ID Number</p>
+                            <p className="text-base">{storeValues?.alternate_government_id_number || "N/A"}</p>
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-col md:gap-6">
+                        <div>
+                            <p className="text-sm">Government ID Issue Date</p>
+                            <p className="text-base">{storeValues?.government_id_issue_date || "N/A"}</p>
+                        </div>
+                        <div>
+                            <p className="text-sm">Alternate Government ID Issue Date</p>
+                            <p className="text-base">{storeValues?.alternate_government_id_issue_date || "N/A"}</p>
                         </div>
                     </div>
                 </div>
@@ -126,8 +141,8 @@ export default function ReviewSubmit({ prev }: IStepProps) {
                 <div className="flex flex-col md:gap-6 md:flex-row md:justify-between w-full">
                     <div className="w-full flex flex-col md:gap-6">
                         <div>
-                            <p>Account Holder Name</p>
-                            <p>{storeValues?.account_holder_name || "N/A"}</p>
+                            <p className="text-sm">Account Holder Name</p>
+                            <p className="text-base">{storeValues?.account_holder_name || "N/A"}</p>
                         </div>
                         <div>
                             <p>Bank Address</p>

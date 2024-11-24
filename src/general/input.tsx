@@ -1,5 +1,5 @@
 import { useKYCStore } from "@/zustand/store";
-import { Select } from "antd";
+import { Select, SelectProps } from "antd";
 
 export function SelectGender() {
     const { form: storeValues } = useKYCStore();
@@ -36,13 +36,17 @@ export function SelectPreferredContactTime() {
     );
 }
 
-export function SelectGovernmentID({ placeholderName, defaultValue }: { placeholderName: string, defaultValue: string }) {
+export function SelectGovernmentID({ placeholderName, defaultValue, filteredVaue, onChange }: { placeholderName: string, defaultValue?: string | null | undefined, filteredVaue?: string | null | undefined, onChange?: (value: string) => void; }) {
     return (
         <Select size='large' placeholder={placeholderName} value={defaultValue} options={[
             { label: "Passport", value: "Passport" },
             { label: "Aadhar Card", value: "Aadhar Card" },
             { label: "Driving License", value: "Driving License" },
-        ]} />
+            { label: "Bank Passbook", value: "Bank Passbook" },
+            { label: "Ratio Card", value: "Ratio Card" },
+            { label: "PAN Card", value: "PAN Card" },
+            { label: "Voter Card", value: "Voter Card" },
+        ]?.filter((item) => item?.value !== filteredVaue)} onChange={onChange} />
     );
 }
 

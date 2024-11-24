@@ -10,7 +10,9 @@ import { SelectGovernmentID, SelectIncomeProof } from '@/general/input';
 export default function DocumentUpload({ next, prev }: IStepProps) {
     const [form] = Form.useForm();
     const { form: storeValues, setFields } = useKYCStore();
-    console.log(storeValues)
+    const [addressProof, setAddressProof] = useState<string | undefined | null>(null);
+    const [incomeProof, setIncomeProof] = useState<string | undefined | null>(null);
+    const filteredIncomeProof = addressProof === incomeProof ? null : incomeProof
 
     const [uploadedDocs, setUploadedDocs] = useState<IUploadedDocsType>({
         address_proof: null,
@@ -69,7 +71,7 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             className="w-full"
                             rules={[{ required: true, message: 'Please Enter Your Select Address Proof!' }]}
                         >
-                            <SelectGovernmentID defaultValue={storeValues?.select_address_proof} placeholderName="Select Address Proof" />
+                            <SelectGovernmentID defaultValue={storeValues?.select_address_proof || addressProof} onChange={(value) => setAddressProof(value)} placeholderName="Select Address Proof" />
                         </Form.Item>
                         <Form.Item
                             label="Select Identity Proof"
@@ -77,7 +79,7 @@ export default function DocumentUpload({ next, prev }: IStepProps) {
                             className="w-full"
                             rules={[{ required: true, message: 'Please Enter Your Select Identity Proof!' }]}
                         >
-                            <SelectGovernmentID defaultValue={storeValues?.select_identity_proof} placeholderName="Select Identity Proof" />
+                            <SelectGovernmentID defaultValue={storeValues?.select_identity_proof || filteredIncomeProof} filteredVaue={addressProof} placeholderName="Select Identity Proof" onChange={(value) => setIncomeProof(value)} />
                         </Form.Item>
                         <Form.Item
                             label="Select Income Proof"

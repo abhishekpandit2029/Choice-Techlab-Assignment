@@ -1,12 +1,22 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Button, message, Steps, theme } from 'antd';
-import PersonalInfoSection from './PersonalInfoSection';
-import DocumentUpload from './DocumentUpload';
-import ReviewSubmit from './ReviewSubmit';
-import TermsConditions from './Terms&Conditions';
+import { Skeleton, Steps, theme } from 'antd';
 import { IStepProps } from '@/interface/main';
+import dynamic from 'next/dynamic';
+
+const PersonalInfoSection = dynamic(() => import('./PersonalInfoSection'), {
+    loading: () => <Skeleton />,
+})
+const DocumentUpload = dynamic(() => import('./DocumentUpload'), {
+    loading: () => <Skeleton />,
+})
+const TermsConditions = dynamic(() => import('./Terms&Conditions'), {
+    loading: () => <Skeleton />,
+})
+const ReviewSubmit = dynamic(() => import('./ReviewSubmit'), {
+    loading: () => <Skeleton />,
+})
 
 const steps = [
     {
@@ -40,12 +50,10 @@ export default function KYCForm() {
         setCurrent(current - 1);
     };
 
-    const items = steps.map((item) => ({ key: item.title, title: item.title }));
-
     const contentStyle: React.CSSProperties = {
         lineHeight: '1.5',
         textAlign: 'left',
-        color: token.colorTextTertiary,
+        // color: token.colorTextTertiary,
         backgroundColor: token.colorFillAlter,
         borderRadius: token.borderRadiusLG,
         border: `1px dashed ${token.colorBorder}`,
@@ -57,7 +65,7 @@ export default function KYCForm() {
         <div className='flex flex-col space-y-8'>
             <p className='font-bold text-3xl'>Complete Choice Techlab KYC Process</p>
             <div className='flex flex-col space-y-6'>
-                <Steps current={current} items={items} />
+                <Steps current={current} items={steps.map((item) => ({ key: item.title, title: item.title }))} />
                 <div style={contentStyle}>
                     {typeof steps[current].content === 'function'
                         ? steps[current].content({ next, prev })

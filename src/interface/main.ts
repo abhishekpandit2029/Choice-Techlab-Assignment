@@ -25,6 +25,9 @@ export interface IKYCForm {
     government_id: string;
     government_id_number: string;
     government_id_issue_date?: string;
+    alternate_government_id: string;
+    alternate_government_id_number: string;
+    alternate_government_id_issue_date?: string;
 
     // Bank Information
     account_holder_name: string;
